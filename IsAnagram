@@ -1,0 +1,46 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        HashMap<Character, Integer> h1=new HashMap<Character, Integer>();
+		HashMap<Character, Integer> h2=new HashMap<Character, Integer>();
+		if(s.length()==t.length()) {
+			for(int i=0;i<s.length();i++) {
+				h1.put(s.charAt(i), h1.getOrDefault(s.charAt(i), 0)+1);
+				h2.put(t.charAt(i), h2.getOrDefault(t.charAt(i), 0)+1);
+			}
+			if(h1.equals(h2)) {
+				return true;
+			}
+			else 
+				return false;
+		}
+		else
+			return false;
+        
+    }
+}
+
+OOOOOOOORRRRRRRR
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        int[] count = new int[26];
+
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
+        }
+
+        for (int num : count) {
+            if (num != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
